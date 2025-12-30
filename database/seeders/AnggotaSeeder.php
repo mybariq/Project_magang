@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Anggota;
+use Illuminate\Support\Facades\Hash;
 
 class AnggotaSeeder extends Seeder
 {
@@ -17,7 +18,7 @@ class AnggotaSeeder extends Seeder
                 Anggota::create([
                     'nama' => $nama,
                     'username' => strtolower(str_replace(' ', '_', $nama)) . ($idx + 1),
-                    'password' => 'password123',
+                    'password' => Hash::make('password123'),
                     'kategori' => $kategori,
                 ]);
             }
