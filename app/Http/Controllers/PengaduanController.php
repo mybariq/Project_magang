@@ -17,9 +17,16 @@ class PengaduanController extends Controller
     public function index(Request $request): View
     {
         $status = $request->query('status');
+        $q = $request->query('q');
 
         $pengaduans = Pengaduan::when($status, function ($query) use ($status) {
             $query->where('status', $status);
+        })->when($q, function ($query) use ($q) {
+            $query->where(function ($sub) use ($q) {
+                $sub->where('judul', 'like', "%{$q}%")
+                    ->orWhere('isi', 'like', "%{$q}%")
+                    ->orWhere('nama', 'like', "%{$q}%");
+            });
         })
             ->latest()
             ->paginate(10)

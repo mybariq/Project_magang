@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\PengaduanController;
+use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\KetuaAuthController;
 use App\Http\Controllers\KetuaDashboardController;
 
-Route::get('/', [PengaduanController::class, 'index'])->name('pengaduan.index');
+Route::get('/', [LandingController::class, 'index'])->name('home');
+Route::get('/pengaduan', [PengaduanController::class, 'index'])->name('pengaduan.index');
 Route::get('/pengaduan/buat', [PengaduanController::class, 'create'])->name('pengaduan.create');
 Route::get('/pengaduan/ketua-anggota', [PengaduanController::class, 'daftarKetuaAnggota'])->name('pengaduan.ketua-anggota');
 Route::post('/pengaduan', [PengaduanController::class, 'store'])->name('pengaduan.store');

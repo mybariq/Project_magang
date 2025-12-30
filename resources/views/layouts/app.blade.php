@@ -150,11 +150,11 @@
 <body>
     <header>
         <div class="inner">
-            <div class="brand">
+            <a href="{{ route('home') }}" class="brand" aria-label="Beranda Sistem Pengaduan">
                 <strong>Sistem Pengaduan Masyarakat</strong>
                 <span>Diskominfo Padang Panjang</span>
                 <span class="clock">Waktu: <span id="clock-text">--:--:--</span></span>
-            </div>
+            </a>
             <div class="flex">
                 @if(session('ketua_id'))
                     <a class="btn ghost" href="{{ route('ketua.dashboard') }}">Dashboard Ketua</a>
